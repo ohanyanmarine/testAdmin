@@ -1,1 +1,1 @@
-export const LOGIN = "@AuthTypes/LOGIN"
+export const LOGIN = "@AuthTypes/LOGIN";

@@ -1,11 +1,29 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "../App.css";
+import Home from "../views/Home";
+import Login from "../views/Login";
+import Panel from "../views/Panel"
+import { Provider } from "react-redux";
+import store from "../store";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      Hello
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+         <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/panel">
+              <Panel />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </Provider>
   );
 }
-
-export default App;
