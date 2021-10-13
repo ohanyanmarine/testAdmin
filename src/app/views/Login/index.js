@@ -11,17 +11,23 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { indigo } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+
 import hook from "./hook";
+import { useSelector } from "react-redux";
+import { errorMessageSelector } from "../../store/selectors/AuthSelector";
 
 export default function InputWithIcon() {
-  const { register,
+  const {
+    register,
     handleSubmit,
-    submit,
+    errors,
+    Submit,
+    values,
     handleChange,
     handleClickShowPassword,
-    handleMouseDownPassword,
-    values
+    handleMouseDownPassword
   } = hook();
+  const errorMessage = useSelector(errorMessageSelector)
 
   return (
     <div className="wrapper">
@@ -34,59 +40,73 @@ export default function InputWithIcon() {
         <div className="title">
           <h1>DOCTORS</h1>
         </div>
-        <form className="form" onSubmit={handleSubmit(submit)}>
-          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-            <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField
-              id="input-with-sx"
-              label="Username"
-              variant="standard"
-              {...register("username", {
-                required: true
-              })}
-            />
-          </Box>
-          <Box>
-            <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
-              <InputLabel htmlFor="standard-adornment-password">
-                Password
-              </InputLabel>
-              <Input
-                id="standard-adornment-password"
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                {...register("password", {
+        <Box sx={{ "& > :not(style)": { m: 1 } }}>
+          <form onSubmit={handleSubmit(Submit)}>
+          {errorMessage?<i style={{color:"red"}}>{errorMessage}</i>:null}
+            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+              <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+              <TextField
+                id="input-with-sx"
+                label="Username"
+                variant="standard"
+                {...register("username", {
                   required: true
                 })}
-                onChange={handleChange("password")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {values.showPassword ? (
-                        <VisibilityOff />
-                      ) : (
-                        <Visibility />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
               />
-            </FormControl>
-          </Box>
-          <Box sx={{mt: 5}}>
+              
+            </Box>
+            <div className="input-item">
+            {errors.username?.type === "required" && (
+              <i>Username is required</i>
+            )}
+            </div>
+            <Box>
+              <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+                <InputLabel htmlFor="standard-adornment-password">
+                  Password
+                </InputLabel>
+                <Input
+                  id="standard-adornment-password"
+                  type={values.showPassword ? "text" : "password"}
+                  value={values.password}
+                  {...register("password", {
+                    required: true
+                  })}
+                  onChange={handleChange("password")}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Box>
+            <div className="input-item">
+            {errors.password?.type === "required" && (
+              <i>Password is required</i>
+            )}
+            </div>
+            
             <Button
               type="submit"
               variant="outlined"
-              sx={{ color: indigo[500], bgcolor: indigo[200] }}
+              sx={{ color: indigo[500], bgcolor: indigo[200], mt: 5}}
             >
               Sign in
             </Button>
-          </Box>
-        </form>
+          </form>
+          
+        </Box>
       </div>
     </div>
   );

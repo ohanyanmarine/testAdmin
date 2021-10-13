@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "../App.css";
-import Home from "../views/Home";
-import Login from "../views/Login";
-import Panel from "../views/Panel"
+import "./App.css";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import Panel from "./views/Panel"
 import { Provider } from "react-redux";
-import store from "../store";
+import store from "./store";
+import PrivatePage from "./views/PrivatePage";
 
 export default function App() {
   return (
@@ -16,8 +17,11 @@ export default function App() {
               <Login />
             </Route>
             <Route path="/panel">
-              <Panel />
-            </Route>
+            <PrivatePage>
+              <Panel></Panel>
+            </PrivatePage>
+          
+          </Route>
             <Route path="/">
               <Home />
             </Route>

@@ -9,7 +9,7 @@ export const loginRequest = async (username, password) => {
     return responce.data;
   } catch (error) {
     if (error.response) {
-      throw error.response.data; // => the response payload
+      throw error.response.data;
     }
     throw error;
   }
