@@ -18,3 +18,16 @@ export const setErrorMessage = (payload) =>{
     payload
   }
 }
+
+export const getMeAction =()=>{
+  return {
+    type: AuthTypes.GET_ME
+  }
+}
+
+export const setMeAction = (payload) => {
+  return {
+    type: AuthTypes.SET_ME,
+    payload
+  }
+}

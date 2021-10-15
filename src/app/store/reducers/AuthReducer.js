@@ -3,7 +3,8 @@ import { AuthTypes } from "../types";
 const INIT_STATE = {
   isAuth: false,
   isAuthError: false,
-  errorMessage: ""
+  errorMessage: "",
+  user: null
 };
 
 export default (state = INIT_STATE, action) => {
@@ -15,6 +16,8 @@ export default (state = INIT_STATE, action) => {
       return { ...state, isAuth: true };
     case AuthTypes.SET_ERROR_MESSAGE:
       return {...state, errorMessage: payload}
+    case AuthTypes.SET_ME: 
+      return {...state, user: payload}
     default:
       break;
   }

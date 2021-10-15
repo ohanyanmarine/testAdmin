@@ -14,3 +14,16 @@ export const loginRequest = async (username, password) => {
     throw error;
   }
 };
+
+export const getMeRequest = async () => {
+  try {
+    const responce = await api.get("users/get-me/");
+    return responce.data;
+  } catch (error) {
+    if (error.response) {
+      throw error.response.data;
+    }
+    throw error;
+  }
+};
+
