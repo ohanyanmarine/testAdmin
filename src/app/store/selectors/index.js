@@ -1,4 +1,4 @@
 import { isAuthSelector, getMeSelector } from "./AuthSelector";
-import { doctorsSelector } from "./DoctorsSelector";
+import { doctorsSelector, selectedDoctor } from "./DoctorsSelector";
 
-export { isAuthSelector, getMeSelector, doctorsSelector };
+export { isAuthSelector, getMeSelector, doctorsSelector, selectedDoctor };

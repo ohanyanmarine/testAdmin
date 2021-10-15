@@ -22,6 +22,7 @@ import { getMeSelector } from "../../store/selectors";
 import Doctors from "../Doctors";
 import { Link } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router"
+import DoctorDetails from "../DoctorDetails";
 //import BasicTable from "../Doctors";
 
 const drawerWidth = 240;
@@ -152,7 +153,8 @@ export default function DrawerLeft() {
         <DrawerHeader />
          <Switch>
             <Route path={`${match.url}/doctors/:id`}>
-              <div>Doctor Details</div>
+              <h2>Doctor Details</h2>
+              <DoctorDetails/>
             </Route>
             <Route path={`${match.url}/home`}>
               <h2>Welcome back {user.first_name}!</h2>

@@ -12,3 +12,9 @@ export const setDoctorsAction = (payload) => {
     payload
   };
 };
+export const selectDoctor = (id)=>{
+    return {
+        type: DoctorsTypes.SELECT_DOCTOR,
+        payload: id
+    }
+}

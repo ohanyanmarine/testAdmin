@@ -5,12 +5,11 @@ import { getDoctorsAction } from "../../store/actions"
 import { doctorsSelector } from "../../store/selectors"
 
 export default ()=>{
-    const {doctors} = useSelector(doctorsSelector);
+    const doctors = useSelector(doctorsSelector);
     const match = useRouteMatch()
     const dispatch = useDispatch();
     useEffect(()=>{
         if(!doctors){
-            //console.log("",getDoctorsAction());
             dispatch(getDoctorsAction());
         }
         console.log(doctors);

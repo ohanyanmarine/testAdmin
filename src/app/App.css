@@ -31,3 +31,11 @@ a:link {
 .button-div{
   margin-top: 35px;
 }
+.paper {
+  padding: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+.paper-div{
+  padding: 25px;
+}

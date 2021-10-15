@@ -7,8 +7,7 @@ function* getDoctors() {
   try {
     const doctors = yield call(doctorsRequest);
     yield put(setDoctorsAction(doctors.results));
-    console.log("dictors are", doctors.result);
-  } catch (error) {
+    } catch (error) {
     console.log(error);
   }
 }
