@@ -12,3 +12,16 @@ export const doctorsRequest = async ()=>{
     }
     
 }
+
+export const updateDoctorRequest = async (id,date)=>{
+    try {
+        const responce = await api.post(`users/doctor-edit/${id}/`,date)
+        return responce.data
+    } catch (error) {
+        if( error.response){
+            throw error.response.data; 
+        }
+        throw error
+    }
+    
+}

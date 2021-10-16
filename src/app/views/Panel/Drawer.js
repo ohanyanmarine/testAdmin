@@ -102,7 +102,7 @@ export default function DrawerLeft() {
             <MenuIcon sx={{ color: "#2b6aa1" }} />
           </IconButton>
           <Typography sx={{ color: "#2b6aa1" }} variant="h6" noWrap component="div">
-            {user.first_name} {user.last_name}
+            {user?user.first_name:""} {user?user.last_name:""}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -157,7 +157,7 @@ export default function DrawerLeft() {
               <DoctorDetails/>
             </Route>
             <Route path={`${match.url}/home`}>
-              <h2>Welcome back {user.first_name}!</h2>
+              <h2>Welcome back {user?user.first_name:""}!</h2>
             </Route>
             <Route path={`${match.url}/doctors`}>
               <Doctors />
