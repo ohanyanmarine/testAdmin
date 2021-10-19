@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import DrawerLeft from "./Drawer";
+import MiniDrawer from "./Drawer";
 export default () => {
   useEffect(() => {
     const access = localStorage.getItem("access");
@@ -9,7 +9,7 @@ export default () => {
   }, []);
   return (
     <div>
-      <DrawerLeft />
+      <MiniDrawer />
     </div>
   );
 };

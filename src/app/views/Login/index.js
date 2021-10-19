@@ -1,19 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button, IconButton } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { indigo } from "@mui/material/colors";
-import { Link } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { blue, indigo } from "@mui/material/colors";
 import hook from "./hook";
 import { useSelector } from "react-redux";
 import { errorMessageSelector } from "../../store/selectors/AuthSelector";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 export default function InputWithIcon() {
   const {
@@ -21,88 +16,69 @@ export default function InputWithIcon() {
     handleSubmit,
     errors,
     Submit,
-    values,
-    handleChange,
-    handleClickShowPassword,
-    handleMouseDownPassword
   } = hook();
   const errorMessage = useSelector(errorMessageSelector)
 
   return (
     <div className="wrapper">
-      <div className="back-icon">
-        <Link to="/">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
       <div className="content">
         <div className="title">
-          <h1>DOCTORS</h1>
+          <h1>Телемедецина</h1>
         </div>
-        <Box sx={{ "& > :not(style)": { m: 1 } }}>
-          <form onSubmit={handleSubmit(Submit)}>
-            {errorMessage ? <i style={{ color: "red" }}>{errorMessage}</i> : null}
-            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-              <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-              <TextField
-                id="input-with-sx"
-                label="Username"
-                variant="standard"
-                {...register("username", {
-                  required: true
-                })}
-              />
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '100%' },
+          }}
+          onSubmit={handleSubmit(Submit)}
+        >
+          {errorMessage ? <i style={{ color: "red" }}>{errorMessage}</i> : null}
+          <TextField defaultValue="123456789" size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PersonOutlineIcon />
+                </InputAdornment>
+              ),
+            }}
+            {...register("username", {
+              required: true
+            })} />
 
-            </Box>
-            <div className="input-item">
-              {errors.username?.type === "required" && (
-                <i>Username is required</i>
-              )}
-            </div>
-            <Box>
-              <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
-                <InputLabel htmlFor="standard-adornment-password">
-                  Password
-                </InputLabel>
-                <Input
-                  id="standard-adornment-password"
-                  type={values.showPassword ? "text" : "password"}
-                  value={values.password}
-                  {...register("password", {
-                    required: true
-                  })}
-                  onChange={handleChange("password")}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
-            </Box>
-            <div className="input-item">
-              {errors.password?.type === "required" && (
-                <i>Password is required</i>
-              )}
-            </div>
-            <Button
-              type="submit"
-              variant="outlined"
-              sx={{ color: indigo[500], bgcolor: indigo[200], mt: 5 }}
-            >
-              Sign in
-            </Button>
-          </form>
+          <div className="input-item">
+            {errors.username?.type === "required" && (
+              <i>Username is required</i>
+            )}
+          </div>
+          <Box>
+            <TextField
+              type="password" size="small"
+              defaultValue="123456789"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockOpenIcon />
+                  </InputAdornment>
+                ),
+              }}
+
+              {...register("password", {
+                required: true
+              })}
+            />
+          </Box>
+          <div className="input-item">
+            {errors.password?.type === "required" && (
+              <i>Password is required</i>
+            )}
+          </div>
+          <Button
+            type="submit" size="small"
+            variant="contained"
+            sx={{ color: "white", bgcolor: blue[200], borderColor: blue[200], mt: 3, width: "100%" }}
+          >
+            Войти
+          </Button>
         </Box>
       </div>
     </div>

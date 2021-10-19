@@ -1,6 +1,5 @@
-import { Avatar, Button, Paper, Typography, TextField } from "@mui/material";
+import { Avatar, Button, Paper, Typography, TextField, CircularProgress } from "@mui/material";
 import { blue, green, grey } from "@mui/material/colors";
-import DatePicker from '@mui/lab/DatePicker';
 
 import hook from "./hook";
 
@@ -52,7 +51,7 @@ export default () => {
                   Country - {doctor.country_code?.country_name?.en}
                 </Typography>
                 <Typography sx={{ fontWeight: "bold" }}>
-                  Category - {doctor?.user_categories ? doctor?.user_categories[0]?.category?.description?.en : ""}
+                  Category - {doctor?.user_categories ? doctor?.user_categories[0]?.category?.description?.en : <CircularProgress />}
                 </Typography>
               </div>
             )

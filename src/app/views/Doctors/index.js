@@ -9,41 +9,64 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom"
 import hook from "./hook"
 import EditIcon from '@mui/icons-material/Edit';
+import { Button, CircularProgress, TextField } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 export default () => {
-    const { doctors, match } = hook()
+  const { doctors, match } = hook()
 
-    return (
-        <>
-        {doctors ?
+  return (
+    <>
+      <div className="main-header">
+        <div>
+          <h1>Доктора</h1>
+        </div>
+        <div>
+          <TextField
+            placeholder="Поиск"
+            type='search' size="small" sx={{ width: "300px", bgcolor: "white" }}
+          />
+        </div>
+        <div>
+          <Link to={`${match.url}/add`}>
+            <Button
+              size="small"
+              variant="outlined"
+              sx={{ bgcolor: blue[300], borderColor: blue[300], color: 'white' }}>
+              Добавить
+            </Button>
+          </Link>
+        </div>
+      </div>
+      {doctors ?
         (<TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Id</TableCell>
-                <TableCell align="right">First Name</TableCell>
+                <TableCell>N</TableCell>
+                <TableCell align="right">Имя</TableCell>
                 <TableCell align="right">Last Name</TableCell>
                 <TableCell align="right">Edit</TableCell>
-            </TableRow>
+              </TableRow>
             </TableHead>
             <TableBody>
-              {doctors.map((doctor) => (
+              {doctors.map((doctor, index) => (
                 <TableRow
-                  key={doctor.id}
+                  key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {doctor.id}
+                    {index}
                   </TableCell>
                   <TableCell align="right">{doctor.first_name}</TableCell>
                   <TableCell align="right">{doctor.last_name}</TableCell>
-                  <TableCell align="right"><Link to={`${match.url}/${doctor.id}`}><EditIcon/></Link></TableCell>
+                  <TableCell align="right"><Link to={`${match.url}/${doctor.id}`}><EditIcon /></Link></TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>)
-        : "loading"}
-        </>
-      );
+        : <CircularProgress />}
+    </>
+  );
 }
