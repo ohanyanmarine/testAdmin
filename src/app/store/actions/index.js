@@ -5,7 +5,7 @@ import { setMeAction } from "./AuthAction";
 import { getDoctorsAction } from "./DoctorsActions";
 import { setDoctorsAction } from "./DoctorsActions";
 import {selectDoctor} from "./DoctorsActions"
-
+import {getCategoriesActions,setCategoriesActions} from "./CategoriesActions"
 export {
   loginAction,
   authSuccessAction,
@@ -13,5 +13,7 @@ export {
   setMeAction,
   getDoctorsAction,
   setDoctorsAction,
-  selectDoctor
+  selectDoctor,
+  getCategoriesActions,
+  setCategoriesActions
 };

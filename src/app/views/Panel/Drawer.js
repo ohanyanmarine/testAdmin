@@ -24,6 +24,7 @@ import { Button, InputBase, TextField } from '@mui/material';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import AddDoctor from '../AddDoctor';
+import { Categories } from '..';
 
 
 const drawerWidth = 240;
@@ -57,7 +58,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
-
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -171,7 +171,7 @@ export default function MiniDrawer() {
               <ListItemText primary="Обратная связь" sx={{ color: grey[800] }} />
             </ListItem>
           </Link>
-          <Link to={`${match.url}/edit-user-details`}>
+          <Link to={`${match.url}/categories`}>
             <ListItem button>
               <ListItemIcon>
                 <BorderColorOutlinedIcon />
@@ -196,6 +196,9 @@ export default function MiniDrawer() {
           </Route>
           <Route path={`${match.url}/doctors`}>
             <Doctors />
+          </Route>
+          <Route path = {`${match.url}/categories`}>
+            <Categories></Categories>
           </Route>
         </Switch>
       </Box>
