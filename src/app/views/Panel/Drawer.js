@@ -25,6 +25,8 @@ import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import AddDoctor from '../AddDoctor';
 import { Categories } from '..';
+import Clients from '../Clients';
+import Feedbacks from '../Feedbacks';
 
 
 const drawerWidth = 240;
@@ -99,8 +101,7 @@ const onClick = () => {
 }
 
 export default function MiniDrawer() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(!open);
@@ -171,24 +172,23 @@ export default function MiniDrawer() {
               <ListItemText primary="Обратная связь" sx={{ color: grey[800] }} />
             </ListItem>
           </Link>
-          <Link to={`${match.url}/categories`}>
+          <Link to={`${match.url}/category`}>
             <ListItem button>
               <ListItemIcon>
                 <BorderColorOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary="Редактирование данных" sx={{ color: grey[800] }} />
+              <ListItemText primary="Категории" sx={{ color: grey[800] }} />
             </ListItem>
           </Link>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: grey[100] }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: "#f0f2f5" }}>
         <DrawerHeader />
         <Switch>
           <Route path={`${match.url}/doctors/add`}>
             <AddDoctor />
           </Route>
           <Route path={`${match.url}/doctors/:id`}>
-            <h2>Doctor Details</h2>
             <DoctorDetails />
           </Route>
           <Route path={`${match.url}/home`}>
@@ -197,8 +197,14 @@ export default function MiniDrawer() {
           <Route path={`${match.url}/doctors`}>
             <Doctors />
           </Route>
-          <Route path = {`${match.url}/categories`}>
+          <Route path = {`${match.url}/category`}>
             <Categories></Categories>
+          </Route>
+          <Route path={`${match.url}/client`}>
+            <Clients />
+          </Route>
+          <Route path={`${match.url}/feed-back`}>
+            <Feedbacks />
           </Route>
         </Switch>
       </Box>

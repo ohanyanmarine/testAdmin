@@ -2,7 +2,7 @@ import api from "..";
 
 export const doctorsRequest = async ()=>{
     try {
-        const responce = await api.get("users/get-doctors/?with_slots=False")
+        const responce = await api.get("users/user/?limit=20&offset=0&role=doctor")
         return responce.data
     } catch (error) {
         if( error.response){
@@ -22,6 +22,5 @@ export const updateDoctorRequest = async (id,date)=>{
             throw error.response.data; 
         }
         throw error
-    }
-    
+    } 
 }

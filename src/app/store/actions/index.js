@@ -6,6 +6,10 @@ import { getDoctorsAction } from "./DoctorsActions";
 import { setDoctorsAction } from "./DoctorsActions";
 import {selectDoctor} from "./DoctorsActions"
 import {getCategoriesActions,setCategoriesActions} from "./CategoriesActions"
+import { getClientsAction, setClientsAction } from "./ClientsActions";
+import {getFeedbackAction, setFeedbackAction, selectFeedback} from "./FeedbackActions";
+
+
 export {
   loginAction,
   authSuccessAction,
@@ -15,5 +19,10 @@ export {
   setDoctorsAction,
   selectDoctor,
   getCategoriesActions,
-  setCategoriesActions
+  setCategoriesActions,
+  getClientsAction,
+  setClientsAction,
+  getFeedbackAction,
+  setFeedbackAction,
+  selectFeedback
 };

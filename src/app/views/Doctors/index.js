@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 import hook from "./hook"
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, CircularProgress, TextField } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, grey } from "@mui/material/colors";
 
 export default () => {
   const { doctors, match } = hook()
@@ -40,27 +40,36 @@ export default () => {
       </div>
       {doctors ?
         (<TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>N</TableCell>
-                <TableCell align="right">Имя</TableCell>
-                <TableCell align="right">Last Name</TableCell>
-                <TableCell align="right">Edit</TableCell>
+          <Table sx={{ width: "100%" }} aria-label="simple table">
+            <TableHead sx={{ bgcolor: grey[50] }}>
+              <TableRow sx={{ border: 1, borderColor: grey[200] }}>
+                <TableCell sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>N</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Имя</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Email</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Номер телефона</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Образование</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Специализируется</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Прод. консультации</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Прод. постоновления</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Цена</TableCell>
+                <TableCell align="left" sx={{ border: 1, borderColor: grey[200], fontWeight: "bold" }}>Edit</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {doctors.map((doctor, index) => (
-                <TableRow
-                  key={index}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                <TableRow key={index}>
                   <TableCell component="th" scope="row">
-                    {index}
+                    {index + 1}
                   </TableCell>
-                  <TableCell align="right">{doctor.first_name}</TableCell>
-                  <TableCell align="right">{doctor.last_name}</TableCell>
-                  <TableCell align="right"><Link to={`${match.url}/${doctor.id}`}><EditIcon /></Link></TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.first_name} {doctor.last_name}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.email}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.phone_number}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.education.slice(0, 20)}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.experience.slice(0, 20)}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.consultation_duration}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.epicrise_duration}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.price}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}><Link to={`${match.url}/${doctor.id}`}><EditIcon /></Link></TableCell>
                 </TableRow>
               ))}
             </TableBody>

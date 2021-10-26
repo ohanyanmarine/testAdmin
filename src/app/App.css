@@ -59,15 +59,114 @@ a:link {
   justify-content: space-between;
   padding-bottom: 15px;
 }
+
+.main-header h1 {
+  font-size: 40px;
+}
 .input-div-top{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 }
-.input-item-add{
+/* .input-item-add{
   max-width: 30%;
   height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.input-item-add label {
+  display: flex;
+  justify-content: flex-start;
+}
+.input-item-add label span {
+  color: red;
+  padding: 0 10px;
+} */
+
+.menu-add{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 12px 0;
+  font-size: 14px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+.menu-add div {
+  color: #56ccf2;
+  text-shadow: 0 0 .25px currentColor
+  
+}
+.upload-button{
+  line-height: 1.5715;
+  display: flex;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+  cursor: pointer;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: rgba(0,0,0,.85);
+  background: #fff;
+  border: 1px solid #d9d9d9
+}
+
+.upload-button-div{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.inputs-add {
+  display: flex;
+  margin: 25px 0;
+}
+.input-item-add {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  padding: 0 12px;
+  margin-top: auto;
+}
+.input-item-add input,
+select {
+  margin: 16px 0;
+  height: 32px;
+}
+
+.input-item-add label {
+  padding: 0 12px;
+}
+
+.phone-input {
+  display: flex;
+}
+.input-item-phone {
+  display: flex;
+  justify-content: space-between;
+}
+.input-item-phone input {
+  margin-left: 4px;
+}
+.form-div {
+  background-color: #f0f2f5;
+}
+input.radio {
+  height: 15px;
+}
+textarea {
+  min-height: 150px;
+  padding: 12px 15px;
+  margin: 15px 0;
+}
+i {
+  color: red;
 }
