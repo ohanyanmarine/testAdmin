@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { Button } from "@mui/material";
 import { blue } from "@mui/material/colors";
-
+import api from "../../services/api"
 
 export default () => {
     const {
@@ -29,7 +29,13 @@ export default () => {
                             accept="image/*"
                             style={{ display: 'none' }}
                             id="icon-button-file"
-                            {...register("file")}
+                            onChange={(res)=>{
+                                const data = new  FormData();
+                                data.append("file_url",res.target.files[0]);
+                                api.post('https://api-tm.annaniks.com/files/files/',data).then((response)=>{
+                                }).catch((error)=>{
+                                })
+                            }}
                         />
                         <label htmlFor="icon-button-file" style={{cursor:"pointer"}}>
                             <span>
