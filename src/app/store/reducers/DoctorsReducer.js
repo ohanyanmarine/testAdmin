@@ -3,7 +3,8 @@ import { DoctorsTypes } from "../types";
 const INIT_STATE = {
   doctors: null,
   selected: {},
-  isChanged :false
+  isChanged :false,
+  
 };
 
 export default (state = INIT_STATE, action) => {
@@ -19,6 +20,8 @@ export default (state = INIT_STATE, action) => {
            return item.id === parseInt(payload);
         })
         return {...state, selected: doctor ? doctor : {}}
+    case DoctorsTypes.SET_ADD_DOCTOR_DATA: 
+        return {...state, doctors: [...state.doctors, payload]}
     default:
         return state;
   }

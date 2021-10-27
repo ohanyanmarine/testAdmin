@@ -3,17 +3,16 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { Button } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import api from "../../services/api"
+import { useDispatch } from "react-redux";
+import hook from "./hook";
 
 export default () => {
+    const {match, onSubmit} = hook()
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm();
-
-    const onSubmit = (data) => {
-        console.log(data);
-    };
 
     return (
         <div className="form-div">
@@ -182,7 +181,7 @@ export default () => {
                             консультации
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             {...register("doctor_details.consultation_duration", {
                                 required: true
                             })}
@@ -198,7 +197,7 @@ export default () => {
                             постоновления
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             {...register("doctor_details.epicrise_duration", {
                                 required: true
                             })}

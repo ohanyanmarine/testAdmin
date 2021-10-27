@@ -1,7 +1,7 @@
 import { takeLatest, call, put,select } from "redux-saga/effects";
 import { DoctorsTypes } from "../types";
-import { doctorsRequest, updateDoctorRequest } from "../../services/api/routes/doctors";
-import { getDoctorsAction, setDoctorsAction } from "../actions";
+import { addDoctorRequest, doctorsRequest, updateDoctorRequest } from "../../services/api/routes/doctors";
+import { getAddDoctorDataAction, getDoctorsAction, setAddDoctorDataAction, setDoctorsAction } from "../actions";
 import { selectedDoctor } from "../selectors";
 
 function* getDoctors() {
@@ -30,9 +30,20 @@ function* updateDoctor(){
   }
 }
 
+function* getAddDoctor({payload}) {
+  //const {doctor} = payload
+  try {
+    const doctors = yield call(addDoctorRequest);     
+    yield put(setAddDoctorDataAction())
+    } catch (error) {
+    console.log(error);
+  }
+}
+
 function* watchDoctorsSaga() {
   yield takeLatest(DoctorsTypes.GET_DOCTORS, getDoctors);
   yield takeLatest(DoctorsTypes.UPDATE_DOCTOR, updateDoctor);
+  yield takeLatest(DoctorsTypes.GET_ADD_DOCTOR_DATA, getAddDoctor)
   
 }
 export { watchDoctorsSaga };

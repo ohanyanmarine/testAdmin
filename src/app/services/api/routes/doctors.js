@@ -24,3 +24,15 @@ export const updateDoctorRequest = async (id,date)=>{
         throw error
     } 
 }
+
+export const addDoctorRequest = async (date)=>{
+    try {
+        const responce = await api.post(`users/doctor-add/`,date)
+        return responce.data
+    } catch (error) {
+        if( error.response){
+            throw error.response.data; 
+        }
+        throw error
+    } 
+}

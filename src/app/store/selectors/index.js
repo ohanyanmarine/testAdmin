@@ -10,5 +10,5 @@ export {
     selectedDoctor, 
     clientsSelector, 
     feedbacksSelector,
-    selectedFeedback 
+    selectedFeedback,
 };
