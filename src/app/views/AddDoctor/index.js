@@ -31,10 +31,13 @@ export default () => {
                             onChange={(res)=>{
                                 const data = new  FormData();
                                 data.append("file_url",res.target.files[0]);
-                                api.post('https://api-tm.annaniks.com/files/files/',data).then((response)=>{
+                                api.post('https://api-tm.annaniks.com/files/files/',data)
+                                .then((response)=>{
+                                    
                                 }).catch((error)=>{
                                 })
                             }}
+                            {...register("profile_image")}
                         />
                         <label htmlFor="icon-button-file" style={{cursor:"pointer"}}>
                             <span>
@@ -84,17 +87,17 @@ export default () => {
                                 <span style={{ color: "red" }}>* </span>Телефон
                             </label>
                             <div className="input-item-phone">
-                                <select>
+                                <select {...register("country_code")}>
                                     <option value="" disabled selected hidden>
                                         Выберите код страны
                                     </option>
-                                    <option value={+374}>+374</option>
-                                    <option value={+40}>+40</option>
-                                    <option value={+7}>+7</option>
-                                    <option value={+380}>+380</option>
+                                    <option value="1">+374</option>
+                                    <option value="2">+40</option>
+                                    <option value="3">+7</option>
+                                    <option value="4">+380</option>
                                 </select>
                                 <input
-                                    type="number"
+                                    type="text"
                                     {...register("phone_number", { required: true })}
                                 />
                             </div>
@@ -142,16 +145,16 @@ export default () => {
                         <div>
                             <input
                                 type="radio"
-                                value="Мужской"
+                                value="1"
                                 className="radio"
-                                {...register("gender_details.title.ru")}
+                                {...register("gender")}
                             />
                             <label>Мужской</label>
                             <input
                                 type="radio"
-                                value="Женский"
+                                value="2"
                                 className="radio"
-                                {...register("gender_details.title.ru")}
+                                {...register("gender")}
                             />
                             <label>Женский</label>
                         </div>
@@ -163,12 +166,12 @@ export default () => {
                         </label>
                         <input
                             placeholder="Выберите год"
-                            type="month"
-                            {...register("doctor_details.excperience_start_year", {
+                            type="number"
+                            {...register("doctor_details.excperience", {
                                 required: true
                             })}
                         />
-                        {errors.excperience_start_year?.type === "required" && (
+                        {errors.excperience?.type === "required" && (
                             <i>Это обязательное поле</i>
                         )}
                     </div>

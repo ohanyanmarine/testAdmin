@@ -30,20 +30,19 @@ function* updateDoctor(){
   }
 }
 
-function* getAddDoctor({payload}) {
+function* addDoctor({ payload }) {
   //const {doctor} = payload
   try {
-    const doctors = yield call(addDoctorRequest);     
-    yield put(setAddDoctorDataAction())
-    } catch (error) {
+    console.log("payload=", payload);
+    const doctor = yield call(addDoctorRequest, payload);
+  } catch (error) {
     console.log(error);
   }
 }
-
 function* watchDoctorsSaga() {
   yield takeLatest(DoctorsTypes.GET_DOCTORS, getDoctors);
   yield takeLatest(DoctorsTypes.UPDATE_DOCTOR, updateDoctor);
-  yield takeLatest(DoctorsTypes.GET_ADD_DOCTOR_DATA, getAddDoctor)
+  yield takeLatest(DoctorsTypes.ADD_DOCTOR, addDoctor);
   
 }
 export { watchDoctorsSaga };

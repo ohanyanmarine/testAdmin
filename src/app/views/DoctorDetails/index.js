@@ -143,9 +143,9 @@ export default () => {
                 </label>
                 <input
                   placeholder="Выберите год"
-                  value={doctor.doctor_details.excperience_start_year}
+                  value={doctor?.doctor_details?.excperience}
                   onChange={(event) => {
-                    update("doctor_details.excperience_start_year", event.target.value)
+                    update("doctor_details.excperience", event.target.value)
                   }}
                 />
               </div>
@@ -158,7 +158,7 @@ export default () => {
                 </label>
                 <input
                   type="text"
-                  value={doctor.doctor_details.consultation_duration} />
+                  value={doctor?.doctor_details?.consultation_duration} />
               </div>
 
               <div className="input-item-add">
@@ -168,7 +168,7 @@ export default () => {
                 </label>
                 <input
                   type="text"
-                  value={doctor.doctor_details.epicrise_duration}
+                  value={doctor?.doctor_details?.epicrise_duration}
                 />
               </div>
 
@@ -178,7 +178,7 @@ export default () => {
                 </label>
                 <input
                   type="number"
-                  value={doctor.doctor_details.price}
+                  value={doctor?.doctor_details?.price}
                 />
               </div>
 
@@ -188,7 +188,7 @@ export default () => {
                 </label>
                 <input
                   type="number"
-                  value={doctor.doctor_details.fee_percent}
+                  value={doctor?.doctor_details?.fee_percent}
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export default () => {
                 </label>
                 <textarea
                   placeholder="Insert text here..."
-                  value={doctor.doctor_details.education}
+                  value={doctor?.doctor_details?.education}
                 />
               </div>
             </div>
@@ -251,14 +251,14 @@ export default () => {
                 </label>
                 <textarea
                   placeholder="Insert text here..."
-                  value={doctor.doctor_details.experience} />
+                  value={doctor?.doctor_details?.experience} />
               </div>
 
               <div className="input-item-add">
                 <label>Дополнительно</label>
                 <textarea
                   placeholder="Insert text here..."
-                  value={doctor.doctor_details.extra_info}
+                  value={doctor?.doctor_details?.extra_info}
                 />
               </div>
             </div>

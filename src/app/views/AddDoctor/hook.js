@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
-import { getAddDoctorDataAction, getDoctorsAction, setAddDoctorDataAction } from "../../store/actions";
+import { addDoctorAction, getDoctorsAction } from "../../store/actions";
 
 
 export default ()=>{
@@ -15,11 +15,9 @@ export default ()=>{
  
     const onSubmit = (data) => {
         console.log(data);
-        if(data){
-            dispatch(getAddDoctorDataAction(data))
-            console.log("data none")
-        }
-        
-    };
+        if (data) {
+          dispatch(addDoctorAction(data));
+          }
+      };
     return { match, onSubmit}
 }

@@ -20,8 +20,8 @@ export default (state = INIT_STATE, action) => {
            return item.id === parseInt(payload);
         })
         return {...state, selected: doctor ? doctor : {}}
-    case DoctorsTypes.SET_ADD_DOCTOR_DATA: 
-        return {...state, doctors: [...state.doctors, payload]}
+        case DoctorsTypes.ADD_DOCTOR:
+          return { ...state, doctors: [ ...state.doctors, payload ] };
     default:
         return state;
   }

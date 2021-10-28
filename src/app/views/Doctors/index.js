@@ -64,11 +64,11 @@ export default () => {
                   <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.first_name} {doctor.last_name}</TableCell>
                   <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.email}</TableCell>
                   <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.phone_number}</TableCell>
-                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.education.slice(0, 20)}</TableCell>
-                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.experience.slice(0, 20)}</TableCell>
-                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.consultation_duration}</TableCell>
-                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.epicrise_duration}</TableCell>
-                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor.doctor_details.price}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor?.doctor_details?.education.slice(0, 20)}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor?.doctor_details?.experience.slice(0, 20)}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor?.doctor_details?.consultation_duration}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor?.doctor_details?.epicrise_duration}</TableCell>
+                  <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}>{doctor?.doctor_details?.price}</TableCell>
                   <TableCell align="left" sx={{ border: 1, borderColor: grey[200] }}><Link to={`${match.url}/${doctor.id}`}><EditIcon /></Link></TableCell>
                 </TableRow>
               ))}

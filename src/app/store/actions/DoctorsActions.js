@@ -30,14 +30,10 @@ export const selectDoctor = (id)=>{
     }
 }
 
-export const getAddDoctorDataAction = (payload) => {
+export const addDoctorAction = (data) => {
   return {
-    type: DoctorsTypes.GET_ADD_DOCTOR_DATA
-  }
-}
-export const setAddDoctorDataAction = (payload) =>{
-  return {
-    type: DoctorsTypes.SET_ADD_DOCTOR_DATA,
-    payload
-  }
-}
+    type: DoctorsTypes.ADD_DOCTOR,
+    payload: data
+  };
+};
+

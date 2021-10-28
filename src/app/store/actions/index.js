@@ -1,5 +1,5 @@
 import { loginAction, authSuccessAction, getMeAction, setMeAction } from "./AuthAction";
-import { getDoctorsAction, setDoctorsAction, selectDoctor, getAddDoctorDataAction, setAddDoctorDataAction } from "./DoctorsActions";
+import { getDoctorsAction, setDoctorsAction, selectDoctor, addDoctorAction } from "./DoctorsActions";
 import {getCategoriesActions,setCategoriesActions} from "./CategoriesActions"
 import { getClientsAction, setClientsAction } from "./ClientsActions";
 import {getFeedbackAction, setFeedbackAction, selectFeedback} from "./FeedbackActions";
@@ -20,6 +20,5 @@ export {
   getFeedbackAction,
   setFeedbackAction,
   selectFeedback,
-  getAddDoctorDataAction,
-  setAddDoctorDataAction
+  addDoctorAction
 };
